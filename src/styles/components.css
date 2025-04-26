@@ -1,0 +1,11 @@
+.btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--font-color);
+  border-radius: 25px;
+
+  &:hover {
+    color: var(--hover-color);
+    border-color: var(--hover-color);
+    transition: all 0.25s ease-in-out;
+  }
+}

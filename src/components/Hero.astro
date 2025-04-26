@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import { sections } from '../utils/constants';
+import avatar from "../assets/avatar.webp";
+
+
+const contactEmail = sections.contact.url;
+---
+
+<section class="hero">
+  <Image
+    class="image"  
+    src={avatar}
+    alt="Dalembert"
+  />
+  <h1 class="title">Hola! Soy Dalembert</h1>
+  <p>
+    Tengo +4 años de experiencia en el mundo del desarrollo de aplicaciones web.
+    <span>Ingeniero de Software</span> de la Universidad Peruana de Ciencias Aplicadas, Lima, Perú"
+    He participado en varios proyectos como desarrollador frontend, backend y fullstack.
+  </p>
+  <nav class="links">
+    <a 
+    class="btn"
+    href={contactEmail}
+  >
+    Contáctame
+  </a>
+  </nav>
+</section>
+
+<style>
+  .hero {
+    p {
+      font-size: 1.20rem;
+      margin-block: 1rem;
+
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+  .image {
+    width: clamp(60px, 5vw, 100px);
+    height: auto;
+    border-radius: 50%;
+  }
+  .title {
+    font-size: 3rem;
+  }
+  .links {
+    display: flex;
+  }
+</style>

@@ -1,0 +1,100 @@
+---
+import { sections } from '../utils/constants';
+
+const options = Object.values(sections);
+---
+
+<header class="header">
+  <nav class="nav">
+    {
+      options.map((option) => (
+        <a class="option" aria-label={option.label} href={option.url}>
+          {option.title}
+        </a>
+      ))
+    }
+  </nav>
+</header>
+
+<script>
+  const sections = document.querySelectorAll("section");
+  const navItems = document.querySelectorAll("header nav option");
+
+  const callback = (entries: any[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        navItems.forEach((item) => {
+          if (item.getAttribute("aria-label") == entry.target.id) {
+            item.classList.add("selected");
+          } else {
+            item.classList.remove("text");
+          }
+        });
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(callback, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.3,
+  });
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+
+  document.onvisibilitychange = () => {
+    if (document.visibilityState === "hidden") {
+      observer.disconnect();
+    } else {
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+    }
+  };
+</script>
+
+<style>
+  .header {
+    --selected-option: var(--hover-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: auto;
+    width: 100%;
+    height: clamp(80px, 5vh, 100px);
+    border-bottom: 1px solid var(--font-color);
+
+    view-timeline-name: --fix;
+    animation-fill-mode: both;
+    animation-name: fixHeader;
+
+    animation-timeline: --fix;
+    animation-range: entry 0 cover 100%;
+
+    @keyframes fixHeader {
+      from {
+        position: static;
+      }
+      to {
+        position: fixed;
+        top: 0;
+        z-index: 10;
+      }
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+
+      .option {
+        &:is(:hover, .selected) {
+          color: var(--selected-option);
+          transition: color 0.25s ease-in;
+        }
+      }
+    }
+  }
+</style>

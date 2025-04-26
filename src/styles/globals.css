@@ -1,0 +1,49 @@
+:root {
+  color-scheme: light dark;
+}
+html {
+  font-family: "Onest Variable", system-ui, sans-serif;
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+body {
+  --font-color: light-dark(rgba(255, 255, 255, 0.578), rgba(255, 255, 255, 0.9));
+  --hover-color: light-dark(rgba(255, 255, 255, 0.578), rgba(255, 255, 255, 0.578));
+  color: var(--font-color);
+  margin: 0;
+  max-width: 100dvw;
+  height: 100dvh;
+}
+
+@media (prefers-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,h2,h3,h4,h5,h6,p,span {
+  margin: 0;
+  width: fit-content;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  text-wrap: balance;
+}
+
+p,span {
+  text-wrap: pretty;
+}
