@@ -27,7 +27,7 @@ const options = Object.values(sections);
           if (item.getAttribute("aria-label") == entry.target.id) {
             item.classList.add("selected");
           } else {
-            item.classList.remove("text");
+            item.classList.remove("selected");
           }
         });
       }

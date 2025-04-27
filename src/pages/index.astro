@@ -1,6 +1,7 @@
 ---
+import Experiences from "../components/Experiences.astro";
 import Header from "../components/Header.astro";
-import Hero from '../components/Hero.astro';
+import Hero from "../components/Hero.astro";
 import SectionWrapper from "../components/SectionWrapper.astro";
 import Layout from "../layouts/Layout.astro";
 import { sections } from "../utils/constants";
@@ -13,7 +14,9 @@ import { sections } from "../utils/constants";
     <SectionWrapper
       id={sections.experience.label}
       title={sections.experience.title}
-    />
+    >
+      <Experiences />
+    </SectionWrapper>
     <SectionWrapper
       id={sections.projects.label}
       title={sections.projects.title}

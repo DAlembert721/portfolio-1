@@ -20,3 +20,10 @@ export const sections = {
     url: "mailto:dalembert.dmu@gmail.com",
   },
 };
+
+export const projectTypes = {
+  frontend: "Frontend",
+  backend: "Backend",
+  mobile: "Mobile App",
+};
+
