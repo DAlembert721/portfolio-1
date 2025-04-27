@@ -1,0 +1,47 @@
+---
+import { projects } from "../utils/projects";
+
+const projectsLists = Object.values(projects).flat();
+---
+
+{
+  projectsLists.map((project) => (
+    <article class="project">
+      <h3>{project.name}</h3>
+      <div class="sub-details">
+        <span>Empresa: {project.organization}</span>
+        <span>Cantidad de miembros de equipo: {project.membersQuantity}</span>
+      </div>
+      <ul class="technologies">
+        {project.technologies.map((tech) => (
+          <li>{tech}</li>
+        ))}
+      </ul>
+      <p class="details">{project.details}</p>
+    </article>
+  ))
+}
+
+<style>
+  .project {
+    display: grid;
+    row-gap: 0.5rem;
+  }
+  .technologies {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+
+    li {
+      padding: 0.5rem 1rem;
+      border: 1.5px solid var(--font-color);
+      border-radius: 40px;
+    }
+  }
+  .sub-details {
+    display: flex;
+    gap: 1rem;
+  }
+</style>
